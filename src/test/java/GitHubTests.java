@@ -4,52 +4,50 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.HeaderPageSelectors;
-import pages.LoginPageSelectors;
+import pages.ElementsHelper;
+import pages.HeaderTab;
+import pages.LoginPage;
+import pages.SettingPage;
 
-public class GitHubTests {
-    WebDriver driver;
-    LoginPageSelectors LoginPageSelectors = new LoginPageSelectors();
+import static org.testng.Assert.assertEquals;
+
+public class GitHubTests extends TestHelper {
 
     @Test(priority = 1)
-    public void logInPageTest() {
-        ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
-        driver = new ChromeDriver();
-        driver.navigate().to("https://github.com/login");
-        driver.manage().window().maximize();
-        Assert.assertEquals(driver.findElement(LoginPageSelectors.loginPageHeader).getText(), "Sign in to GitHub");
-        Assert.assertEquals(driver.findElement(LoginPageSelectors.textLabel).getText(),"Username or email address");
-        driver.findElement(LoginPageSelectors.loginInputField).sendKeys("vasoenergi@gmail.com");
-        driver.findElement(LoginPageSelectors.passwordInputField).sendKeys("FreeR1de!");
-        driver.findElement(LoginPageSelectors.signInButton).click();
+    public void HeadersTest() {
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.pullRequestsButtonIsDisplayed, 5),"Pull requests");
+
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.issuesYouCreatedIsDisplayed,5),"Issues");
+
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.marketplaceButtonIsDisplayed,5),"Marketplace");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.exploreButtonIsDisplayed,5),"Explore");
 
     }
 
-    @Test(priority = 2)
-    public void HeaderPage () {
-
-        boolean isPullRequestsPresent = driver.findElement(headerTabLocators.pullRequests).isDisplayed();
-        Assert.assertTrue(isPullRequestsPresent);
-        boolean isPullRequestsClickable = elementsHelper.isClickable(headerTabLocators.pullRequests);
-        Assert.assertTrue(isPullRequestsClickable);
-
-        boolean isIssuesPresent = driver.findElement(HeaderPageSelectors.).isDisplayed();
-        Assert.assertTrue(isIssuesPresent);
-        boolean isIssuesClickable = elementsHelper.isClickable(headerTabLocators.issues);
-        Assert.assertTrue(isIssuesClickable);
-
-        boolean isMarketplacePresent = driver.findElement(headerTabLocators.marketplace).isDisplayed();
-        Assert.assertTrue(isMarketplacePresent);
-        boolean isMarketplaceClickable = elementsHelper.isClickable(headerTabLocators.marketplace);
-        Assert.assertTrue(isMarketplaceClickable);
-
-        boolean isExplorePresent = driver.findElement(headerTabLocators.explore).isDisplayed();
-        Assert.assertTrue(isExplorePresent);
-        boolean isExploreClickable = elementsHelpers.isClickable(headerTabLocators.explore);
-        Assert.assertTrue(isExploreClickable);
+    @Test (priority = 2)
+    public void SettingPageTest () {
+        driver.get("https://github.com/settings/profile");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateProfileButtonIsDisplayed,5),"Update profile");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateContributionsButtonIsDisplayed),"Update contributions");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveJobsProfileButtonIsDisplayed,5),"Save jobs profile");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveTrendingSettingButtonIsDisplayed,5),"Save Trending settings");
+        Assert.assertEquals(driver.findElement(settingPage.publicProfileTextIsDisplayed).getText(),"Public profile");
+        Assert.assertEquals(driver.findElement(settingPage.nameTextIsDisplayed).getText(),"Name");
+        Assert.assertEquals(driver.findElement(settingPage.publicEmailTextIsDisplayed).getText(),"Public email");
+        Assert.assertEquals(driver.findElement(settingPage.bioTextIsDisplayed).getText(),"Bio");
+        Assert.assertEquals(driver.findElement(settingPage.urlTextIsDisplayed).getText(),"URL");
+        Assert.assertEquals(driver.findElement(settingPage.companyTextIsDisplayed).getText(),"Company");
+        Assert.assertEquals(driver.findElement(settingPage.locationTextIsDisplayed).getText(),"Location");
+        Assert.assertEquals(driver.findElement(settingPage.gitHubDeveloperProgramIsDisplayed).getText(),"GitHub Developer Program");
     }
-        @Test(priority = 3)
-        public void SettingPageTest() {
-            driver.navigate().to("https://github.com/settings/profile");
 
-        } }
+
+}
+
+
+
+
+
+
+
+
