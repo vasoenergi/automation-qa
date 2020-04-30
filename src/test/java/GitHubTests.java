@@ -1,17 +1,7 @@
-import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.DriverManagerType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
-import pages.ElementsHelper;
-import pages.HeaderTab;
-import pages.LoginPage;
-import pages.SettingPage;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
-public class GitHubTests extends TestHelper {
+public class GitHubTests extends TestBase {
 
     @Test(priority = 1)
     public void HeadersTest() {
@@ -27,27 +17,22 @@ public class GitHubTests extends TestHelper {
     @Test (priority = 2)
     public void SettingPageTest () {
         driver.get("https://github.com/settings/profile");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateProfileButtonIsDisplayed,5),"Update profile");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateContributionsButtonIsDisplayed),"Update contributions");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveJobsProfileButtonIsDisplayed,5),"Save jobs profile");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveTrendingSettingButtonIsDisplayed,5),"Save Trending settings");
-        Assert.assertEquals(driver.findElement(settingPage.publicProfileTextIsDisplayed).getText(),"Public profile");
-        Assert.assertEquals(driver.findElement(settingPage.nameTextIsDisplayed).getText(),"Name");
-        Assert.assertEquals(driver.findElement(settingPage.publicEmailTextIsDisplayed).getText(),"Public email");
-        Assert.assertEquals(driver.findElement(settingPage.bioTextIsDisplayed).getText(),"Bio");
-        Assert.assertEquals(driver.findElement(settingPage.urlTextIsDisplayed).getText(),"URL");
-        Assert.assertEquals(driver.findElement(settingPage.companyTextIsDisplayed).getText(),"Company");
-        Assert.assertEquals(driver.findElement(settingPage.locationTextIsDisplayed).getText(),"Location");
-        Assert.assertEquals(driver.findElement(settingPage.gitHubDeveloperProgramIsDisplayed).getText(),"GitHub Developer Program");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateProfileButton,5),"Update profile");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateContributionsButton, 5),"Update contributions");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveJobsProfileButton,5),"Save jobs profile");
+        Assert.assertEquals(driver.findElement(settingPage.profilePictureText).getText(),"Profile picture");
+        Assert.assertEquals(driver.findElement(settingPage.publicProfileText).getText(),"Public profile");
+        Assert.assertEquals(driver.findElement(settingPage.nameText).getText(),"Name");
+        Assert.assertEquals(driver.findElement(settingPage.publicEmailText).getText(),"Public email");
+        Assert.assertEquals(driver.findElement(settingPage.bioText).getText(),"Bio");
+        Assert.assertEquals(driver.findElement(settingPage.urlText).getText(),"URL");
+        Assert.assertEquals(driver.findElement(settingPage.companyText).getText(),"Company");
+        Assert.assertEquals(driver.findElement(settingPage.locationText).getText(),"Location");
+        Assert.assertEquals(driver.findElement(settingPage.gitHubDeveloperProgram).getText(),"GitHub Developer Program");
     }
 
 
 }
-
-
-
-
-
 
 
 

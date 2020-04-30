@@ -4,18 +4,18 @@ import org.openqa.selenium.By;
 
 public class SettingPage {
 
-        public By updateProfileButtonIsDisplayed = By.linkText("Update profile");
-        public By updateContributionsButtonIsDisplayed = By.linkText("Update contributions");
-        public By saveJobsProfileButtonIsDisplayed = By.linkText("Save jobs profile");
-        public By saveTrendingSettingButtonIsDisplayed = By.linkText("Save Trending settings");
-        public By publicProfileTextIsDisplayed = By.linkText("Public profile");
-        public By nameTextIsDisplayed = new By.ByLinkText("Name");
-        public By publicEmailTextIsDisplayed = new By.ByLinkText("Public email");
-        public By bioTextIsDisplayed = new By.ByLinkText("Bio");
-        public By urlTextIsDisplayed = new By.ByLinkText("URL");
-        public By companyTextIsDisplayed = new By.ByLinkText("Company");
-        public By locationTextIsDisplayed = new By.ByLinkText("Location");
-        public By contributionsTextIsDisplayed = By.xpath("//h2[@id='contributions-heading']");
-        public By gitHubDeveloperProgramIsDisplayed = new By.ByLinkText("GitHub Developer Program'");
+        public By publicProfileText = By.xpath("//h2[@id='public-profile-heading']");
+        public By nameText = By.cssSelector("[for='user_profile_name']");
+        public By publicEmailText = By.cssSelector("[for ='user_profile_email']");
+        public By bioText = By.cssSelector("[for='user_profile_bio']");
+        public By urlText = By.cssSelector("[for='user_profile_blog']");
+        public By companyText =By.cssSelector("[for='user_profile_company']");
+        public By locationText = By.cssSelector("[for ='user_profile_location']");
+        public By contributionsText = By.xpath("//h2[@id='contributions-heading']");
+        public By gitHubDeveloperProgram = By.xpath("//h2[contains(text(),'GitHub Developer Program')]");
+        public By updateProfileButton = By.xpath("//button[@class='btn btn-primary']");
+        public By updateContributionsButton = By.xpath("//button[contains(text(),'Update contributions')]");
+        public By saveJobsProfileButton = By.xpath("//button[contains(text(),'Save jobs profile')]");
+        public By profilePictureText = By.xpath("//label[@class='d-block mb-2']");
 
 }
