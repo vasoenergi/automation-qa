@@ -25,8 +25,30 @@ public class ElementsHelper {
             return driver.findElement(element).getText();
         } catch (NoSuchElementException e) {
             throw new RuntimeException("The following element is not found: " + element, e);
-
         }
     }
 
+
+    public void clickOnClickableElement (By element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, (timeout));
+
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            driver.findElement(element).click();
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException(" The following element is not found: " + element, e);
+        }
+    }
+
+    public boolean isElementPresent (By element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, (timeout));
+
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(element));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+
+    }
 }
