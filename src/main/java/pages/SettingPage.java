@@ -17,5 +17,8 @@ public class SettingPage {
         public By updateContributionsButton = By.xpath("//button[contains(text(),'Update contributions')]");
         public By saveJobsProfileButton = By.xpath("//button[contains(text(),'Save jobs profile')]");
         public By profilePictureText = By.xpath("//label[@class='d-block mb-2']");
+        public By viewProfileButton = By.cssSelector("[aria-label='View profile and more']");
+        public By signedInAsButton = By.xpath("//div[@class='header-nav-current-user css-truncate']");
+        public By settingPageButton = By.cssSelector("[href='/settings/profile']");
 
 }

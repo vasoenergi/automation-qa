@@ -6,9 +6,7 @@ public class GitHubTests extends TestBase {
     @Test(priority = 1)
     public void HeadersTest() {
         Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.pullRequestsButtonIsDisplayed, 5),"Pull requests");
-
         Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.issuesYouCreatedIsDisplayed,5),"Issues");
-
         Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.marketplaceButtonIsDisplayed,5),"Marketplace");
         Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.exploreButtonIsDisplayed,5),"Explore");
 
@@ -16,7 +14,9 @@ public class GitHubTests extends TestBase {
 
     @Test (priority = 2)
     public void SettingPageTest () {
-        driver.get("https://github.com/settings/profile");
+        elementsHelper.clickOnClickableElement(settingPage.viewProfileButton,5);
+        Assert.assertTrue(elementsHelper.isElementPresent(settingPage.signedInAsButton, 2));
+        elementsHelper.clickOnClickableElement(settingPage.settingPageButton,2);
         Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateProfileButton,5),"Update profile");
         Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.updateContributionsButton, 5),"Update contributions");
         Assert.assertEquals(elementsHelper.getTextToClickableElement(settingPage.saveJobsProfileButton,5),"Save jobs profile");
@@ -29,6 +29,7 @@ public class GitHubTests extends TestBase {
         Assert.assertEquals(driver.findElement(settingPage.companyText).getText(),"Company");
         Assert.assertEquals(driver.findElement(settingPage.locationText).getText(),"Location");
         Assert.assertEquals(driver.findElement(settingPage.gitHubDeveloperProgram).getText(),"GitHub Developer Program");
+
     }
 
 

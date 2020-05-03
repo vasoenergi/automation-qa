@@ -22,7 +22,7 @@ public class TestBase {
         driver = new ChromeDriver();
         elementsHelper = new ElementsHelper(driver);
         driver.navigate().to("https://github.com/login");
-        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
         driver.findElement(loginPage.loginInputField).sendKeys("vasoenergi@gmail.com");
         driver.findElement(loginPage.passwordInputField).sendKeys("FreeR1de!");
         driver.findElement(loginPage.signInButton).click();
