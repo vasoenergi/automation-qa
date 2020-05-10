@@ -1,14 +1,24 @@
-Apache Maven should be installed, to check it execute "mvn -v". Instruction how to setup Maven You can find here: https://maven.apache.org/install.html;
-Build tests: "mvn package";
-###For tests building required parameters should be set:
+#This is the study project to verify the core aspects of some GitHub parts using Selenium WebDriver.
 
-"-Denvironment" — Environment for which You would like to run tests, e.g. "-Denvironment=qatest"
-"-DrunnerFile" — Runner file which specifies browsers strategy for test execution:
-"-DrunnerFile=all_browsers" — It means that tests will be executed in all available browsers;
-"-DrunnerFile=select_browser" - It means that tests will be executed in one of the specific browser that You can set using "-Dbrowser" parameter e.g. "-Dbrowser=Chrome";
-For example if You want to run tests for "........" only in Chrome You can use the following command: "mvn package -Denvironment=qatest -DrunnerFile=select_browser -Dbrowser=Chrome"; For run tests in all available browsers: "mvn package -Denvironment=qatest -DrunnerFile=all_browsers";
+To launch this code on your local machine you must have installed the following things:
 
-####Note:
+JDK
+Maven compiler and surefire plugins
+At least one of the following browsers: Chrome, FireFox, IE 11.0, Edge, Opera
+The following dependencies are used in pom.xml:
+
+Selenium-java
+TestNG
+At least one of the following drivers: Chrome driver, Firefox driver, InternetExplorer driver, Edge driver, Opera driver
+Webdrivermanager
+Hamcrest
+To push the code you should:
+
+git init (do it once)
+git add .
+git commit -m "write what you did"
+git push origin master
+To run the tests use the following command: mvn package -DrunnerFile=select_browser -Dbrowser=CHROME (instead of CHROME you may also use the next browsers: FIREFOX, IE11, EDGE, OPERA)
 
 Web Browsers Drivers will be downloaded automatically using dependencies in the "pom.xml" file;
 Test execution report You can find in the "target/surefire-reports/emailable-report.html";
