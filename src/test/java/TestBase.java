@@ -1,4 +1,3 @@
-import com.sun.org.apache.xalan.internal.xsltc.dom.SimpleResultTreeImpl;
 import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,8 +7,9 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import pages.ElementsHelper;
+import helpers.ElementsHelper;
 import pages.HeaderTab;
+import pages.LogInAndOut;
 import pages.LoginPage;
 import pages.SettingPage;
 
@@ -20,6 +20,7 @@ public class TestBase {
     HeaderTab headerTab = new HeaderTab();
     LoginPage loginPage = new LoginPage();
     SettingPage settingPage = new SettingPage();
+    LogInAndOut logInAndOut = new LogInAndOut();
     String testURL = "https://github.com/login";
     String login = "vasoenergi@gmail.com";
     String pass = "FreeR1de!";
@@ -58,7 +59,7 @@ public class TestBase {
 
     @AfterClass
     public void tearDown() {
-        //if (driver !=null)
+        if (driver !=null)
         driver.quit();
     }
 

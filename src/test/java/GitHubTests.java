@@ -5,10 +5,10 @@ public class GitHubTests extends TestBase {
 
     @Test(priority = 1)
     public void HeadersTest() {
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.pullRequestsButtonIsDisplayed, 5),"Pull requests");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.issuesYouCreatedIsDisplayed,5),"Issues");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.marketplaceButtonIsDisplayed,5),"Marketplace");
-        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.exploreButtonIsDisplayed,5),"Explore");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.pullRequestsButton, 5),"Pull requests");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.issuesYouCreated,5),"Issues");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.marketplaceButton,5),"Marketplace");
+        Assert.assertEquals(elementsHelper.getTextToClickableElement(headerTab.exploreButton,5),"Explore");
 
     }
 
@@ -31,7 +31,6 @@ public class GitHubTests extends TestBase {
         Assert.assertEquals(driver.findElement(settingPage.gitHubDeveloperProgram).getText(),"GitHub Developer Program");
 
     }
-
 
 }
 

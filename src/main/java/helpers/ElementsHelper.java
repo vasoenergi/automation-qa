@@ -1,4 +1,4 @@
-package pages;
+package helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -36,7 +36,7 @@ public class ElementsHelper {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             driver.findElement(element).click();
         } catch (NoSuchElementException e) {
-            throw new RuntimeException(" The following element is not found: " + element, e);
+            throw new RuntimeException(" The following element is not сlickable: " + element, e);
         }
     }
 

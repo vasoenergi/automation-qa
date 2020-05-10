@@ -23,4 +23,4 @@ To run the tests use the following command: mvn package -DrunnerFile=select_brow
 Web Browsers Drivers will be downloaded automatically using dependencies in the "pom.xml" file;
 Test execution report You can find in the "target/surefire-reports/emailable-report.html";
 For run specific test suites You can use "*.xml" files in the "runner" folder and set name of the specific test case;
-Available browsers: Chrome, Firefox, Edge, IE11 (Tests in IE11 and Edge currently aren't working, should be provided solution soon);
+Available browsers: Chrome, Firefox, Edge, IE11
