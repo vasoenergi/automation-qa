@@ -9,7 +9,7 @@ The following dependencies are used in pom.xml:
 
 Selenium-java
 TestNG
-At least one of the following drivers: Chrome driver, Firefox driver, InternetExplorer driver, Edge driver, Opera driver
+The following drivers: Chrome driver, Firefox driver, InternetExplorer driver, Edge driver, Opera driver
 Webdrivermanager
 Hamcrest
 To push the code you should:
@@ -19,8 +19,3 @@ git add .
 git commit -m "write what you did"
 git push origin master
 To run the tests use the following command: mvn package -DrunnerFile=select_browser -Dbrowser=CHROME (instead of CHROME you may also use the next browsers: FIREFOX, IE11, EDGE, OPERA)
-
-Web Browsers Drivers will be downloaded automatically using dependencies in the "pom.xml" file;
-Test execution report You can find in the "target/surefire-reports/emailable-report.html";
-For run specific test suites You can use "*.xml" files in the "runner" folder and set name of the specific test case;
-Available browsers: Chrome, Firefox, Edge, IE11

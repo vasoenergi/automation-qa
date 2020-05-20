@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="VasyaAutomationQA">
+
+    <test name="ChromeBrowserTest">
+        <parameter name="browser" value="CHROME"/>
+        <classes>
+            <class name="GitHubTests"></class>
+        </classes>
+    </test>
+
+    <test name="FirefoxBrowserTest">
+        <parameter name="browser" value="FIREFOX"/>
+        <classes>
+            <class name="GitHubTests"></class>
+        </classes>
+    </test>
+
+    <test name="OperaBrowserTest">
+        <parameter name="browser" value="OPERA"/>
+        <classes>
+            <class name="GitHubTests"></class>
+        </classes>
+    </test>
+
+</suite>

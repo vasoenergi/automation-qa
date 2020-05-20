@@ -4,60 +4,48 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.openqa.selenium.opera.OperaDriver;
+import org.testng.annotations.*;
 import helpers.ElementsHelper;
-import pages.HeaderTab;
-import pages.LogInAndOut;
-import pages.LoginPage;
-import pages.SettingPage;
+import pages.*;
 
 public class TestBase {
     WebDriver driver;
 
-    ElementsHelper elementsHelper = new ElementsHelper();
-    HeaderTab headerTab = new HeaderTab();
-    LoginPage loginPage = new LoginPage();
-    SettingPage settingPage = new SettingPage();
-    LogInAndOut logInAndOut = new LogInAndOut();
+    ElementsHelper elementsHelper;
+
     String testURL = "https://github.com/login";
     String login = "vasoenergi@gmail.com";
     String pass = "FreeR1de!";
 
-    @BeforeClass
+    @BeforeGroups (groups = {"test_groups"})
     @Parameters ("browser")
     public void setUp(Browsers browser) {
         switch (browser) {
             case CHROME:
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
                 driver = new ChromeDriver();
-                break;
-            case EDGE:
-                EdgeDriverManager.getInstance(DriverManagerType.EDGE).setup();
-                driver = new EdgeDriver();
-                break;
-            case IE11:
-                InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER).setup();
-                driver = new InternetExplorerDriver();
-                break;
+            break;
+
+            case OPERA:
+                OperaDriverManager.getInstance(DriverManagerType.OPERA).setup();
+                driver = new OperaDriver();
+
             case FIREFOX:
                 FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
                 driver = new FirefoxDriver();
                 break;
             default:
-                throw new RuntimeException("Invalid specified browser: " + browser + "expected one of 'CHROME','IE11','EDGE','FIREFOX'");
+                throw new RuntimeException("Invalid specified browser: " + browser + "expected one of 'CHROME','IE11','OPERA','FIREFOX'");
         }
 
         elementsHelper = new ElementsHelper(driver);
         driver.navigate().to(testURL);
         driver.manage().window().maximize();
-        driver.findElement(loginPage.loginInputField).sendKeys (login);
-        driver.findElement(loginPage.passwordInputField).sendKeys(pass);
-        driver.findElement(loginPage.signInButton).click();
+
     }
 
-    @AfterClass
+    @AfterGroups (groups = {"test_groups"})
     public void tearDown() {
         if (driver !=null)
         driver.quit();
