@@ -1,13 +1,15 @@
-import io.github.bonigarcia.wdm.*;
+import helpers.ElementsHelper;
+import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
+import io.github.bonigarcia.wdm.OperaDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.testng.annotations.*;
-import helpers.ElementsHelper;
-import pages.*;
+import org.testng.annotations.AfterGroups;
+import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.Parameters;
 
 public class TestBase {
     WebDriver driver;
@@ -18,25 +20,23 @@ public class TestBase {
     String login = "vasoenergi@gmail.com";
     String pass = "FreeR1de!";
 
-    @BeforeGroups (groups = {"test_groups"})
-    @Parameters ("browser")
+    @BeforeGroups(groups = {"test_groups"})
+    @Parameters("browser")
     public void setUp(Browsers browser) {
         switch (browser) {
             case CHROME:
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
                 driver = new ChromeDriver();
-            break;
-
+                break;
             case OPERA:
                 OperaDriverManager.getInstance(DriverManagerType.OPERA).setup();
                 driver = new OperaDriver();
-
             case FIREFOX:
                 FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
                 driver = new FirefoxDriver();
                 break;
             default:
-                throw new RuntimeException("Invalid specified browser: " + browser + "expected one of 'CHROME','IE11','OPERA','FIREFOX'");
+                throw new RuntimeException("Invalid specified browser: " + browser + "expected one of 'CHROME','OPERA','FIREFOX'");
         }
 
         elementsHelper = new ElementsHelper(driver);
@@ -45,10 +45,10 @@ public class TestBase {
 
     }
 
-    @AfterGroups (groups = {"test_groups"})
+    @AfterGroups(groups = {"test_groups"})
     public void tearDown() {
-        if (driver !=null)
-        driver.quit();
+        if (driver != null)
+            driver.quit();
     }
 
 }
